@@ -101,6 +101,53 @@ h1 {
   cursor: pointer;
 }
 
+.search-bar {
+  width: 50%;
+  margin: 50px auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar input[type="text"] {
+  width: 70%;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.search-bar input[type="submit"] {
+  width: 20%;
+  height: 40px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+}
+
+.search-bar input[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+.no-results {
+  text-align: center;
+  color: rgb(255, 251, 0);
+  font-weight: bold;
+  padding: 20px;
+}
+
+
+
+
+
+
+
+
 /* doing Responsive Styles */
 @media (max-width: 768px) {
   td {
