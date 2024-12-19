@@ -2,7 +2,7 @@ table {
   border-collapse: collapse;
   margin: 20px auto;
   font-family: Arial, sans-serif;
-  width: 80%; 
+  width: 80%;
 }
 
 td {
@@ -11,7 +11,7 @@ td {
   text-align: center;
   vertical-align: middle;
   border: 1px solid #169e95;
-  font-size: 16px; 
+  font-size: 16px;
   transition: background-color 0.3s, transform 0.2s;
 }
 
@@ -21,11 +21,10 @@ td:hover {
   cursor: pointer;
 }
 
-
 .empty:hover {
-  background-color: transparent; 
-  transform: none; 
-  cursor: default; 
+  background-color: transparent;
+  transform: none;
+  cursor: default;
 }
 
 .element {
@@ -36,7 +35,7 @@ td:hover {
 
 .atomic-no {
   display: block;
-  font-size: 12px; 
+  font-size: 12px;
   color: #666;
 }
 
@@ -55,7 +54,8 @@ body {
   margin: 0px;
 }
 
-th, td {
+th,
+td {
   padding: 5px;
   border: 1px solid #a7bf20;
 }
@@ -84,12 +84,12 @@ h1 {
 }
 
 .f-block-row {
-  margin-top: 20px; 
+  margin-top: 20px;
 }
 
 .f-block-container {
-  margin: 40px auto; 
-  border-top: 2px solid #444; 
+  margin: 40px auto;
+  border-top: 2px solid #444;
   padding-top: 20px;
   width: 85%;
   text-align: center;
@@ -99,6 +99,23 @@ h1 {
   background-color: #cc9900;
   transform: scale(1.1);
   cursor: pointer;
+}
+
+button {
+  width: 25%;
+  height: 40px;
+  padding: 10px;
+  margin: 10px 0;  
+  border: none;
+  border-radius: 5px;
+  background-color: #3bb6eb;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+button:hover {
+  background-color: #0056b3;
 }
 
 .search-bar {
@@ -125,7 +142,7 @@ h1 {
   padding: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: #fff;
   cursor: pointer;
 }
@@ -140,41 +157,38 @@ h1 {
   font-weight: bold;
   padding: 20px;
 }
-
-
-
-
-
-
-
+.no-results:hover{
+  background-color: transparent;
+  transform: none;
+  cursor: default;
+}
 
 /* doing Responsive Styles */
 @media (max-width: 768px) {
   td {
-    width: 10%; 
-    font-size: 14px; 
+    width: 10%;
+    font-size: 14px;
   }
 }
 
 @media (max-width: 480px) {
   td {
-    width: 20%; 
-    font-size: 12px; 
+    width: 20%;
+    font-size: 12px;
   }
-  
- 
+
   table {
     display: block;
-    overflow-x: auto; 
+    overflow-x: auto;
   }
-  
+
   tr {
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
   }
-  
+
   td {
-    flex: 1 0 20%; 
-    box-sizing: border-box; 
+    flex: 1 0 20%;
+    box-sizing: border-box;
   }
 }

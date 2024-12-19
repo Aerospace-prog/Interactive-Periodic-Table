@@ -9,21 +9,21 @@
     
 </head>
 <body>
-  <div class="search-bar">
+    <div class="search-bar">
     <form onsubmit="searchElement(event)">
-        <input type="text" id="search-input" placeholder="Search...(Atomic no. or symbol)">
+        <input type="text" id="search-input" placeholder="Enter Atomic no. or Symbol to Search">
         <input type="submit" value="Search">
     </form>
-</div>
-
+    <button onclick="renderTable(periodicTable); resetInput();">See Full Periodic-Table</button>
+  </div>
 
 
     <div id="table">
       <table id="periodic-table"></table>
     </div> 
+    
+    
     <script src="script.js"></script>
-    
-    
 </body>
 </html>
 
