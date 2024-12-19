@@ -24,7 +24,7 @@
 
 ## 🛠️ **Tech Stack**
 
-- **Frontend**: HTML, CSS, JavaScript (or framework, e.g., React.js, if applicable)
+- **Frontend**: HTML, CSS, JavaScript 
 - **Database** (optional): JSON or an external API for element data
 - **Styling**: TailwindCSS / Bootstrap / Custom CSS
 
