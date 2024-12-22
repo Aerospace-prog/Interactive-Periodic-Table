@@ -49,9 +49,11 @@ tr {
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: rgb(43, 145, 145);
+  background-image:url(https://res.cloudinary.com/dl6yojnad/image/upload/f_auto,q_auto/v1734865003/background_yrln1m.png); 
   padding: 0px;
   margin: 0px;
+  background-position: center; 
+  background-repeat: no-repeat;
 }
 
 th,
@@ -101,8 +103,8 @@ h1 {
   cursor: pointer;
 }
 
-button {
-  width: 25%;
+.show-table-btn {
+  width: 50%;
   height: 40px;
   padding: 10px;
   margin: 10px 0;  
@@ -112,9 +114,10 @@ button {
   color: white;
   cursor: pointer;
   font-size: 15px;
+  display: none;
 }
 
-button:hover {
+.show-table-btn:hover {
   background-color: #0056b3;
 }
 
@@ -122,17 +125,16 @@ button:hover {
   width: 50%;
   margin: 50px auto;
   padding: 10px;
-  border: 1px solid #ccc;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 10 10 10px black;
 }
 
 .search-bar input[type="text"] {
   width: 70%;
-  height: 40px;
+  height: 30px;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 30px;
   font-size: 18px;
 }
 
@@ -145,10 +147,14 @@ button:hover {
   background-color: #4caf50;
   color: #fff;
   cursor: pointer;
+  transition: 0.5s;
 }
 
 .search-bar input[type="submit"]:hover {
-  background-color: #3e8e41;
+  background: #03f484;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03f484, 0 0 25px #03f484, 0 0 50px #03f484, 0 0 100px #03f484;
 }
 
 .no-results {
@@ -191,4 +197,65 @@ button:hover {
     flex: 1 0 20%;
     box-sizing: border-box;
   }
+}
+
+
+
+.sidebar {
+  display: none; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 200px;
+  backdrop-filter: blur(5px);
+  border-right: 3px solid #8716dd;
+  border-radius: 40px;
+  box-shadow: black 2px 0px 10px;
+  padding: 10px;
+  overflow-y: auto;
+  z-index: 2;
+  
+}
+
+.sidebar h3 {
+  margin-bottom: 10px;
+  color: #444;
+}
+
+#sidebar-history-list {
+  list-style: none;
+  padding: 0;
+}
+
+.history-item {
+  padding: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.history-item:hover {
+  background-color: #e0e0e0;
+}
+
+#his-bar {
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+  cursor: pointer;
+  background-color: black;
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  font-size: 10px;
+  transition: background-color 0.3s;
+  position: absolute; 
+  top: 20px; 
+  right: 20px;
+}
+
+#his-bar:hover {
+  background-color: #fff;
+  color: black;
+  transition: background-color 0.5s, color 0.5s;
 }
