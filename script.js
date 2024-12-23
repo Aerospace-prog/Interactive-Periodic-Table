@@ -1,3 +1,6 @@
+// I HAVE ADDED CUSTOM NATIVE LANG - HINGLISH COMMENTS FOR BEGINNERS TO UNDERSTAND THE CODE BETTER
+
+
 const table = document.getElementById("periodic-table");
 
 function renderTable(elements) {
@@ -63,7 +66,7 @@ function searchElement(event) {
     return;
   }
 
-  // Display the button
+  // Display the button when clicked on search button
   document.querySelector('.show-table-btn').style.display = 'block';
 
   //calling the function for tracking when search button clicked
@@ -150,9 +153,15 @@ function tracksSearchHistory() {
   const searchInput = document.getElementById("search-input").value.trim();
 
   // Ignore empty input
-  if (!searchInput) return;
+  if (!searchInput){
+    return;
+  } 
 
-  // Get existing search history from localStorage or create a new array
+  // Niche ham existing history mai se get karenge and if not availbale so empty array initialize karnge:-->
+  //JSON.parse() is used to convert the string back into an object
+  //localStorage.getItem() is used to get the value of the specified localStorage item
+  //if the item doesn't exist, it will return null
+  //if the item exists, it will return the value as a string
   const searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
 
   // Add the search term only if it's unique
@@ -160,12 +169,13 @@ function tracksSearchHistory() {
     searchHistory.push(searchInput); // adds the input value
 
     // Limit the number of history items to 10 
+    //if the search history is greater than 10 then remove the first element
     if (searchHistory.length > 10) {
       searchHistory.shift(); // used array methods - to remove the first element
     }
 
     // Save updated search history back to localStorage
-    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));// key mai ham string rakha and value mai array
   }
 
   // Update the sidebar with the new history
@@ -186,11 +196,12 @@ function displaySidebarHistory() {
     listItem.textContent = term;
     listItem.classList.add("history-item");
 
-    //when user clicks the particular history so we can use in input to search again
+    //Jab user kisi particular history item par click karega toh uska value search input box mai set ho jayega
     listItem.onclick = () => {
       document.getElementById("search-input").value = term;
     };
 
+    // Here hamne history list (sidebar)  mai append kiya hai
     historyList.appendChild(listItem);
   });
 }
@@ -211,7 +222,7 @@ function toggleSidebar() {
   }
 }
 
-// Call this on page load to populate sidebar with existing history
+// Calling kar rahe hai jisse update hojaye existing history
 displaySidebarHistory();
 
 //After the show table btn clicked so making its display none
