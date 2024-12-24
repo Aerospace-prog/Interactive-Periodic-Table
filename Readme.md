@@ -16,9 +16,14 @@
 ---
 
 ## 🖼️ **Preview**
+<h1>HomePage</h1>
 
-![App Screenshot](./screenshot.png)  
-*(Add a screenshot of your application here.)*
+<img width="1467" alt="image" src="https://github.com/user-attachments/assets/969bd9c4-b3ff-4ddf-a521-f6feac2127f6" />
+
+  <h1>You can even access your history</h1>
+  <img width="1118" alt="image" src="https://github.com/user-attachments/assets/3ff7a27f-8933-4967-a4b1-8205cd3823f3" />
+
+
 
 ---
 
