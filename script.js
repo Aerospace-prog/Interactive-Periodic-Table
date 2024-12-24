@@ -1,4 +1,4 @@
-// I HAVE ADDED CUSTOM NATIVE LANG - HINGLISH COMMENTS FOR BEGINNERS TO UNDERSTAND THE CODE BETTER
+// I HAVE ADDED CUSTOM NATIVE LANG - HINGLISH COMMENTS FOR BEGINNERS TO UNDERSTAND THE BELOW CODE BETTER
 
 
 const table = document.getElementById("periodic-table");
@@ -18,6 +18,12 @@ function renderTable(elements) {
       if (cellData) {
         cell.classList.add("element");
         cell.innerHTML = `<strong>${cellData.symbol}</strong><span class="atomic-no">${cellData.atomicNo}</span>`;
+
+        //Here ham log cellData mai gradient property check kar rahe hai agar hai toh uska background color set kara hai
+        if(cellData.color){
+          cell.style.background = cellData.color;
+          cell.style.color = "black";
+        }
       } else {
         cell.classList.add("empty");
       }
@@ -43,7 +49,12 @@ function renderTable(elements) {
       const cell = document.createElement("td");
       cell.classList.add("element", "f-block");
       cell.innerHTML = `<strong>${element.symbol}</strong><span class="atomic-no">${element.atomicNo}</span>`;
+      if(element.color){
+        cell.style.background = element.color;
+        cell.style.color = "black";
+      }
       row.appendChild(cell);
+      //here ham log celldata(element) mai gradient property check kar rahe hai agar hai toh uska background color set kara hai
     });
 
     table.appendChild(row);
@@ -51,14 +62,12 @@ function renderTable(elements) {
 }
 //render table function ends here
 
+
 //Search function starts
 function searchElement(event) {
   event.preventDefault(); 
   //trims the whitespace ,convert into lower case for case insensitive search
-  const searchTerm = document
-    .getElementById("search-input")
-    .value.trim()
-    .toLowerCase();
+  const searchTerm = document.getElementById("search-input").value.trim().toLowerCase();
 
  // Show an alert if the input is empty 
   if (!searchTerm) {
@@ -124,7 +133,6 @@ function searchElement(event) {
 
   //When result is not found then below will handle it
   if (uniqueElements.size === 0) {
-    alert("No results : Enter a Valid Searchable content");
     const row = document.createElement("tr");
     const cell = document.createElement("td");
     cell.colSpan = 1;
@@ -136,7 +144,7 @@ function searchElement(event) {
 }
 //Search function ends here
 
-// calling kar rahe hai for rendering table function
+// calling kar rahe hai for rendering table
 renderTable(periodicTable);
 
 
@@ -228,4 +236,10 @@ displaySidebarHistory();
 //After the show table btn clicked so making its display none
 function btnDisplayNone(){
   document.querySelector('.show-table-btn').style.display = "none";
+}
+
+// This function actually Clears the search history
+function clearHistory() {
+  localStorage.removeItem("searchHistory");
+  displaySidebarHistory();
 }

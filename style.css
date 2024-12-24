@@ -16,7 +16,6 @@ td {
 }
 
 td:hover {
-  background-color: rgb(77, 255, 0);
   transform: scale(1.25);
   cursor: pointer;
 }
@@ -30,7 +29,7 @@ td:hover {
 .element {
   background-color: #f2f2f2;
   font-weight: bold;
-  border: 1px solid #a7bf20;
+  border: 3px solid white;
 }
 
 .atomic-no {
@@ -49,11 +48,14 @@ tr {
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-image:url(https://res.cloudinary.com/dl6yojnad/image/upload/f_auto,q_auto/v1734865003/background_yrln1m.png); 
+  background-image: url(https://res.cloudinary.com/dl6yojnad/image/upload/f_auto,q_auto/v1734865003/background_yrln1m.png);
   padding: 0px;
   margin: 0px;
-  background-position: center; 
+  text-align: center;
+  background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: cover;
 }
 
 th,
@@ -69,11 +71,10 @@ h1 {
 }
 
 .f-block {
-  background-color: #f0e68c;
   font-weight: bold;
   text-align: center;
   color: #444;
-  border: 1px solid #888;
+  border: 3px solid white;
 }
 
 .f-block-label {
@@ -98,8 +99,7 @@ h1 {
 }
 
 .f-block:hover {
-  background-color: #cc9900;
-  transform: scale(1.1);
+  transform: scale(1.25);
   cursor: pointer;
 }
 
@@ -145,6 +145,7 @@ h1 {
   border: none;
   border-radius: 5px;
   background-color: #4caf50;
+  font-weight: bold;
   color: #fff;
   cursor: pointer;
   transition: 0.5s;
@@ -162,6 +163,7 @@ h1 {
   color: rgb(255, 251, 0);
   font-weight: bold;
   padding: 20px;
+  border: none;
 }
 .no-results:hover{
   background-color: transparent;
@@ -258,4 +260,63 @@ h1 {
   background-color: #fff;
   color: black;
   transition: background-color 0.5s, color 0.5s;
+}
+
+
+
+#clear-history-btn {
+  width: 100%; 
+  padding: 10px; 
+  margin-top: 10px; 
+  border: none; 
+  border-radius: 5px; 
+  background-color: #ff4d4d; 
+  color: white; 
+  font-size: 16px; 
+  font-weight: bold; 
+  cursor: pointer; 
+  transition: background-color 0.7s, transform 0.5s;
+}
+
+#clear-history-btn:hover {
+  background-color: #e60000; 
+  box-shadow: 0 0 5px #e60000, 0 0 25px #e60000, 0 0 50px #e60000, 0 0 100px #e60000;
+  transform: scale(1.05); 
+}
+
+.category{
+  padding: 10px;
+  margin: 5px;
+  border:none;
+  display: inline-block;
+}
+#alkaline{
+  background: #F7CE8B;
+}
+#alkali{
+  background: #FAE1B7;
+}
+#Transition{
+  background: #CFC4E6;
+}
+#Lanthanides{
+  background: #E8EEA5;
+}
+#Actinides{
+  background:#BDE4F9;
+}
+#Metalloids{
+  background: #FDF188;
+}
+#noble{
+  background: #EEEEEE;
+}
+#o-metal{
+  background: #F7CFD3;
+}
+#o-non-metal{
+  background: #F3AF96;
+}
+#halogens{
+  background:#AFD5AB;
 }
