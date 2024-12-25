@@ -23,6 +23,8 @@
   <h1>You can even access your history</h1>
   <img width="1118" alt="image" src="https://github.com/user-attachments/assets/3ff7a27f-8933-4967-a4b1-8205cd3823f3" />
 
+<h1>We can know more about details</h1>
+<img width="680" alt="image" src="https://github.com/user-attachments/assets/49b23d63-8c50-4bbe-ab13-8c36b9ab5ab6" />
 
 
 ---
