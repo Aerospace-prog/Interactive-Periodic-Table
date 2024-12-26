@@ -22,7 +22,7 @@ const periodicTable = [
 
   [
     { symbol: "Li", atomicNo: 3, color: "#FAE1B8", atomicMass: 6.94, name: "Lithium" },
-    { symbol: "Be", atomicNo: 4, color: "#F6CD8B", atomicMass: 9.0122, Name: "Beryllium" },
+    { symbol: "Be", atomicNo: 4, color: "#F6CD8B", atomicMass: 9.0122, name: "Beryllium" },
     null,
     null,
     null,
