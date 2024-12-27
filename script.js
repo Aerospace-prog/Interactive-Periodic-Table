@@ -78,7 +78,7 @@ function searchElement(event) {
   }
 
   // Display the button when clicked on search button
-  /*dount 11111 */
+  
   document.querySelector('.show-table-btn').style.display = 'block';
 
   //calling the function for tracking when search button clicked
