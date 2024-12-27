@@ -24,6 +24,7 @@ function renderTable(elements) {
           cell.style.background = cellData.color;
           cell.style.color = "black";
         }
+        cell.onclick = () => openPopup(cellData);
       } else {
         cell.classList.add("empty");
       }
@@ -53,6 +54,7 @@ function renderTable(elements) {
         cell.style.background = element.color;
         cell.style.color = "black";
       }
+      cell.onclick = () => openPopup(element);
       row.appendChild(cell);
       //here ham log celldata(element) mai gradient property check kar rahe hai agar hai toh uska background color set kara hai
     });
@@ -76,6 +78,7 @@ function searchElement(event) {
   }
 
   // Display the button when clicked on search button
+  /*dount 11111 */
   document.querySelector('.show-table-btn').style.display = 'block';
 
   //calling the function for tracking when search button clicked
@@ -149,12 +152,10 @@ renderTable(periodicTable);
 
 
 //resetting the input box
-function resetInput() {
+function resetInput() {   
   const searchInput = document.getElementById("search-input");
   searchInput.value = "";
 }
-
-
 
 //  saving the search history in localStorage
 function tracksSearchHistory() {
@@ -214,6 +215,8 @@ function displaySidebarHistory() {
   });
 }
 
+
+
 // Function to toggle the visibility of the sidebar
 function toggleSidebar() {
   const sidebar = document.getElementById("history-sidebar");
@@ -254,7 +257,7 @@ function openPopup(element) {
   const details = document.getElementById("element-details");
 
   title.textContent = `${element.symbol} (Atomic No: ${element.atomicNo})`;
-  details.innerHTML = `<strong>${element.name}</strong> <br> <strong>Atomic Mass:</strong> ${element.atomicMass} `; // Yo
+  details.innerHTML = `<strong>${element.name}</strong> <br> <strong>Atomic Mass:</strong> ${element.atomicMass} `; 
 
   popup.style.display = "block";
 }
@@ -263,61 +266,4 @@ function openPopup(element) {
 function closePopup() {
   const popup = document.getElementById("element-popup");
   popup.style.display = "none";
-}
-
-// Update the renderTable function to add click event listeners to each cell
-function renderTable(elements) {
-  table.innerHTML = "";
-
-  elements.forEach((rowData) => {
-    const row = document.createElement("tr");
-
-    rowData.forEach((cellData) => {
-      const cell = document.createElement("td");
-
-      if (cellData) {
-        cell.classList.add("element");
-        cell.innerHTML = `<strong>${cellData.symbol}</strong><span class="atomic-no">${cellData.atomicNo}</span>`;
-
-        if (cellData.color) {
-          cell.style.background = cellData.color;
-          cell.style.color = "black";
-        }
-
-        // Add click event listener to open the popup
-        cell.onclick = () => openPopup(cellData);
-      } else {
-        cell.classList.add("empty");
-      }
-
-      row.appendChild(cell);
-    });
-
-    table.appendChild(row);
-  });
-
-  // Render f-block elements (same as before)
-  fBlock.forEach((block) => {
-    const row = document.createElement("tr");
-    const labelcell = document.createElement("td");
-    labelcell.colSpan = 3;
-    labelcell.classList.add("f-block-label");
-    labelcell.textContent = block.label;
-    row.appendChild(labelcell);
-
-    block.elements.forEach((element) => {
-      const cell = document.createElement("td");
-      cell.classList.add("element", "f-block");
-      cell.innerHTML = `<strong>${element.symbol}</strong><span class="atomic-no">${element.atomicNo}</span>`;
-      if (element.color) {
-        cell.style.background = element.color;
-        cell.style.color = "black";
-      }
-      // Add click event listener to open the popup
-      cell.onclick = () => openPopup(element);
-      row.appendChild(cell);
-    });
-
-    table.appendChild(row);
-  });
 }
