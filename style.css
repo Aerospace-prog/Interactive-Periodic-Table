@@ -11,7 +11,7 @@ td {
   text-align: center;
   vertical-align: middle;
   border: 1px solid #169e95;
-  font-size: 16px;
+  font-size: 20px;
   transition: background-color 0.3s, transform 0.2s;
 }
 
@@ -371,6 +371,8 @@ th {
   border: none;
   height: 50px; 
   text-align: center; 
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
 }
 
 .search-bar select {
