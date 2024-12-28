@@ -83,11 +83,6 @@ function searchElement(event) {
   const stateFilter = document.getElementById("state-filter").value;
   const metallicCharacterFilter = document.getElementById("metallic-character-filter").value;
 
-  // Show an alert if the input is empty 
-  if (!searchTerm) {
-    alert("Please enter a search term.");
-    return;
-  }
 
   // Display the button when clicked on search button
   
