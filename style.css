@@ -364,3 +364,58 @@ h1 {
   text-decoration: none;
   cursor: pointer;
 }
+
+th {
+  background-color:none; 
+  font-weight: bold; 
+  border: none;
+  height: 50px; 
+  text-align: center; 
+}
+
+.search-bar select {
+  width: 30%;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-right: 10px; 
+  background-color: #f9f9f9; 
+  transition: background-color 0.3s;
+}
+
+.search-bar select:hover {
+  background-color: #e0e0e0;  
+}
+
+.search-bar select option {
+  padding: 10px; 
+  background-color: #fff; 
+  color: #333; 
+}
+
+.search-bar select option:checked {
+  background-color: #4caf50; 
+  color: white; 
+}
+
+#reset-filters-btn {
+  height: 40px;
+  padding: 10px;
+  margin-left: 10px; 
+  border: none;
+  border-radius: 5px;
+  background-color: #ff4d4d; 
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  transition: 0.2s;
+}
+
+#reset-filters-btn:hover {
+  background-color: #e60000; 
+  box-shadow: 0 0 5px #e60000, 0 0 25px #e60000, 0 0 50px #e60000, 0 0 100px #e60000;
+}

@@ -8,6 +8,16 @@ function renderTable(elements) {
   //because if we don't clear the table content then the search result will be appended to th
   table.innerHTML = "";
 
+
+  const headerRow = document.createElement("tr");
+  const groupNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
+  groupNumbers.forEach(group => {
+    const th = document.createElement("th");
+    th.textContent = group;
+    headerRow.appendChild(th);
+  });
+  table.appendChild(headerRow);
+
   // yaha se s,p,d block elements render hoga
   elements.forEach((rowData) => {
     const row = document.createElement("tr");
@@ -70,6 +80,8 @@ function searchElement(event) {
   event.preventDefault();
   //trims the whitespace ,convert into lower case for case insensitive search
   const searchTerm = document.getElementById("search-input").value.trim().toLowerCase();
+  const stateFilter = document.getElementById("state-filter").value;
+  const metallicCharacterFilter = document.getElementById("metallic-character-filter").value;
 
   // Show an alert if the input is empty 
   if (!searchTerm) {
@@ -99,10 +111,14 @@ function searchElement(event) {
         const matchesSymbol = element.symbol.toLowerCase().includes(searchTerm);
         const matchesAtomicNo = element.atomicNo.toString().includes(searchTerm);
 
+        //checking the state and metallic character filter
+        const matchesState = stateFilter ? element.state === stateFilter : true;
+        const matchesMetallicCharacter = metallicCharacterFilter ? element.metallicCharacter === metallicCharacterFilter : true;
+
         //if the element matches the search term then add it to the set
         //json stringify kyu use kiya:
         //because json.stringify() returns a string of the elements in the set
-        if (matchesSymbol || matchesAtomicNo) {
+        if ((matchesSymbol || matchesAtomicNo) && matchesState && matchesMetallicCharacter) {
           uniqueElements.add(JSON.stringify(element));
         }
       }
@@ -115,7 +131,11 @@ function searchElement(event) {
       const matchesSymbol = element.symbol.toLowerCase().includes(searchTerm);
       const matchesAtomicNo = element.atomicNo.toString().includes(searchTerm);
 
-      if (matchesSymbol || matchesAtomicNo) {
+      //checking the state and metallic character filter
+      const matchesState = stateFilter ? element.state === stateFilter : true;
+      const matchesMetallicCharacter = metallicCharacterFilter ? element.metallicCharatcer === metallicCharacterFilter : true;
+
+      if ((matchesSymbol || matchesAtomicNo)&& matchesState &&matchesMetallicCharacter) {
         uniqueElements.add(JSON.stringify(element));
       }
     });
@@ -129,7 +149,17 @@ function searchElement(event) {
     const row = document.createElement("tr");
     const cell = document.createElement("td");
     cell.classList.add("element");
+    
+    //if the element matches the search term then set the background color in the searched window also
+    if (element.symbol.toLowerCase().includes(searchTerm) || element.atomicNo.toString().includes(searchTerm)) {
+      cell.style.background = element.color;
+      cell.style.color = "black";
+    }
+
     cell.innerHTML = `<strong>${element.symbol}</strong><span class="atomic-no">${element.atomicNo}</span>`;
+    //niche wale lines user ko search result wale element par click karne par details popup mai show hoga
+    cell.onclick = () => openPopup(element);
+
     row.appendChild(cell);
     table.appendChild(row);
   });
@@ -248,8 +278,6 @@ function clearHistory() {
 }
 
 
-
-
 // Function to open the popup with element details
 function openPopup(element) {
   const popup = document.getElementById("element-popup");
@@ -257,7 +285,7 @@ function openPopup(element) {
   const details = document.getElementById("element-details");
 
   title.textContent = `${element.symbol} (Atomic No: ${element.atomicNo})`;
-  details.innerHTML = `<strong>${element.name}</strong> <br> <strong>Atomic Mass:</strong> ${element.atomicMass} `; 
+  details.innerHTML = `<img src=${element.image} height="150px"> <br> <strong>${element.name}</strong> <br> <strong>Atomic Mass:</strong> ${element.atomicMass} `; 
 
   popup.style.display = "block";
 }
@@ -266,4 +294,10 @@ function openPopup(element) {
 function closePopup() {
   const popup = document.getElementById("element-popup");
   popup.style.display = "none";
+}
+
+//This fucntion now will reset the filtered options
+function resetFilters(){
+  document.getElementById("state-filter").value = "";
+  document.getElementById("metallic-character-filter").value = "";
 }

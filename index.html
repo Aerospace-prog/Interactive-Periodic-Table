@@ -18,10 +18,26 @@
   <form onsubmit="searchElement(event)">
     <input type="text" id="search-input" placeholder="Enter Atomic no. or Symbol to Search">
     <input type="submit" value="Search">
+    <!-- New Filter Dropdowns -->
+     <h2>Filter Elements</h2>
+    <select id="state-filter">
+      <option value="">All States</option>
+      <option value="solid">Solid</option>
+      <option value="liquid">Liquid</option>
+      <option value="gas">Gas</option>
+    </select>
+    
+    <select id="metallic-character-filter">
+      <option value="">All Types</option>
+      <option value="metal">Metal</option>
+      <option value="non-metal">Non-Metal</option>
+      <option value="metalloid">Metalloid</option>
+    </select>
+    <button type="button" id="reset-filters-btn" onclick="resetFilters()">Reset Filters</button>
   </form>
-  <button onclick="renderTable(periodicTable); resetInput(); btnDisplayNone()" class="show-table-btn">Click to See Full
-    Periodic-Table</button>
+  <button onclick="renderTable(periodicTable); resetInput(); btnDisplayNone()" class="show-table-btn">Click to See Full Periodic-Table</button>
 </div>
+
 
 <!-- Search History code -->
 <div id="history-sidebar" class="sidebar">
