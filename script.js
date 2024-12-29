@@ -296,3 +296,15 @@ function resetFilters(){
   document.getElementById("state-filter").value = "";
   document.getElementById("metallic-character-filter").value = "";
 }
+
+// Function to open the help modal
+function openHelp() {
+  const helpModal = document.getElementById("help-modal");
+  helpModal.style.display = "block"; 
+}
+
+// Function to close the help modal
+function closeHelp() {
+  const helpModal = document.getElementById("help-modal");
+  helpModal.style.display = "none"; 
+}
