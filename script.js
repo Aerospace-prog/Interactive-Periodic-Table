@@ -298,13 +298,16 @@ function resetFilters(){
 }
 
 // Function to open the help modal
+//here i tried to make the help modal popup smooth transition
 function openHelp() {
   const helpModal = document.getElementById("help-modal");
-  helpModal.style.display = "block"; 
+  helpModal.style.opacity = "1"; 
+  helpModal.style.visibility = "visible";
 }
 
 // Function to close the help modal
 function closeHelp() {
   const helpModal = document.getElementById("help-modal");
-  helpModal.style.display = "none"; 
+  helpModal.style.opacity = "0"; 
+  helpModal.style.visibility = "hidden";
 }
