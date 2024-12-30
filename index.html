@@ -36,6 +36,12 @@
       <option value="non-metal">Non-Metal</option>
       <option value="metalloid">Metalloid</option>
     </select>
+
+    <br>
+    <label for="mass-range">Atomic Mass Range:</label>
+    <input type="range" id="mass-range" min="1" max="300" value="300" step="1" oninput="updateMassValue(this.value)">
+    <span id="mass-value">300</span> <!-- Display the current value of the range slider -->
+    <br><br>
     <button type="button" id="reset-filters-btn" onclick="resetFilters()">Reset Filters</button>
   </form>
   <button onclick="renderTable(periodicTable); resetInput(); btnDisplayNone()" class="show-table-btn">Click to See Full Periodic-Table</button>
@@ -90,7 +96,7 @@
 <!-- Help Modal -->
 <div id="help-modal" class="modal">
   <div class="modal-content">
-      <span class="closeHelp" onclick="closeHelp()">&times;</span>
+      <span class="close" onclick="closeHelp()">&times;</span>
       <h2>Help</h2>
       <p>Welcome to the Interactive Periodic Table!</p>
       <h3>How to Use:</h3>
@@ -98,6 +104,7 @@
           <li><strong>Search Bar:</strong> Type the name, symbol, or atomic number of an element to filter results.</li>
           <li><strong>Click Elements:</strong> Click on any element in the table to view detailed information.</li>
           <li><strong>Filters:</strong> Use the dropdown filters to narrow down your search by state (solid, liquid, gas) or metallic character (metal, non-metal, metalloid).</li>
+          <li><strong>Atomic Mass Range Slider:</strong> Use the slider to set a maximum atomic mass for the elements displayed. Move the slider left to decrease the maximum mass or right to increase it. The current value will be displayed next to the slider.</li>
           <li><strong>History:</strong> Access your search history from the sidebar.</li>
       </ul>
       <h3>Need More Help?</h3>

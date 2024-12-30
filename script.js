@@ -82,6 +82,8 @@ function searchElement(event) {
   const searchTerm = document.getElementById("search-input").value.trim().toLowerCase();
   const stateFilter = document.getElementById("state-filter").value;
   const metallicCharacterFilter = document.getElementById("metallic-character-filter").value;
+  const massRange = document.getElementById("mass-range").value;
+
 
 
   // Display the button when clicked on search button
@@ -109,13 +111,16 @@ function searchElement(event) {
         //checking the state and metallic character filter
         const matchesState = stateFilter ? element.state === stateFilter : true;
         const matchesMetallicCharacter = metallicCharacterFilter ? element.metallicCharacter === metallicCharacterFilter : true;
+        const matchesMass = element.atomicMass <= massRange; // Check if atomic mass is within the range
+
 
         //if the element matches the search term then add it to the set
         //json stringify kyu use kiya:
         //because json.stringify() returns a string of the elements in the set
-        if ((matchesSymbol || matchesAtomicNo) && matchesState && matchesMetallicCharacter) {
+        if ((matchesSymbol || matchesAtomicNo) && matchesState && matchesMetallicCharacter && matchesMass) {
           uniqueElements.add(JSON.stringify(element));
-        }
+      }
+
       }
     });
   });
@@ -129,10 +134,12 @@ function searchElement(event) {
       //checking the state and metallic character filter
       const matchesState = stateFilter ? element.state === stateFilter : true;
       const matchesMetallicCharacter = metallicCharacterFilter ? element.metallicCharatcer === metallicCharacterFilter : true;
+      const matchesMass = element.atomicMass <= massRange; // Check if atomic mass is within the range
 
-      if ((matchesSymbol || matchesAtomicNo)&& matchesState &&matchesMetallicCharacter) {
+
+      if ((matchesSymbol || matchesAtomicNo) && matchesState && matchesMetallicCharacter && matchesMass) {
         uniqueElements.add(JSON.stringify(element));
-      }
+    }
     });
   });
 
@@ -310,4 +317,9 @@ function closeHelp() {
   const helpModal = document.getElementById("help-modal");
   helpModal.style.opacity = "0"; 
   helpModal.style.visibility = "hidden";
+}
+
+// Function to update the displayed value of the mass range slider
+function updateMassValue(value) {
+  document.getElementById("mass-value").textContent = value;
 }
