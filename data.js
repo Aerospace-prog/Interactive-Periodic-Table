@@ -1,6 +1,6 @@
 const periodicTable = [
   [
-    { symbol: "H", atomicNo: 1, color: "#F1B092", atomicMass: 1.008, name: "Hydrogen" ,image:"https://res.cloudinary.com/ddgqnimxd/image/upload/f_auto,g_auto/v1735214156/s13_vsothx.jpg" ,state:"gas",metallicCharacter:"non-metal"},
+    { symbol: "H", atomicNo: 1, color: "#F1B092", atomicMass: 1.008, name: "Hydrogen" ,image:"https://res.cloudinary.com/ddgqnimxd/image/upload/v1735214156/s13_vsothx.jpg" ,state:"gas",metallicCharacter:"non-metal"},
     null,
     null,
     null,
@@ -17,7 +17,7 @@ const periodicTable = [
     null,
     null,
     null,
-    { symbol: "He", atomicNo: 2, color: "#EEEEEE", atomicMass: 4.002602, name: "Helium",image:"https://res.cloudinary.com/ddgqnimxd/image/upload/f_auto,g_auto/v1735213997/helium_bivlyo.jpg" ,state:"gas",metallicCharacter:"non-metal"}
+    { symbol: "He", atomicNo: 2, color: "#EEEEEE", atomicMass: 4.002602, name: "Helium",image:"https://res.cloudinary.com/ddgqnimxd/image/upload/v1735213997/helium_bivlyo.jpg" ,state:"gas",metallicCharacter:"non-metal"}
   ],
 
   [

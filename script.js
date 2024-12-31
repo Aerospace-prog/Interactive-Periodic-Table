@@ -282,14 +282,44 @@ function clearHistory() {
 
 // Function to open the popup with element details
 function openPopup(element) {
+  
   const popup = document.getElementById("element-popup");
   const title = document.getElementById("element-title");
   const details = document.getElementById("element-details");
+  const popupContent = document.getElementById("popup-content");
 
+  // Set the title and details
   title.textContent = `${element.symbol} (Atomic No: ${element.atomicNo})`;
-  details.innerHTML = `<img src=${element.image} height="150px"> <br> <strong>${element.name}</strong> <br> <strong>Atomic Mass:</strong> ${element.atomicMass} `; 
+  details.innerHTML = `<img src=${element.image}  height="150px"> <br> <strong>${element.name}</strong> <br> <strong>Atomic Mass:</strong> ${element.atomicMass}`;
 
+  let modelContainer = document.getElementById("model-container");
+
+  // If a container already exists, clear it and call its cleanup method
+  if (modelContainer) {
+    if (modelContainer.cleanup) {
+      modelContainer.cleanup(); // Dispose of the previous model resources
+    }
+    modelContainer.remove(); // Remove the old container
+  }
+
+  // Create a container for the 3D model
+  modelContainer = document.createElement("div");
+  modelContainer.id = "model-container";
+  modelContainer.style.width = "220px";
+  modelContainer.style.height = "220px";
+  modelContainer.style.margin = "20px auto";
+ 
+  //here we are appending the model container to the popup content
+  popupContent.appendChild(modelContainer);
+  
+
+  // Call the function to create the 3D atomic model
+  createAtomicModel(modelContainer,element);
+  
+
+  // Display the popup
   popup.style.display = "block";
+  
 }
 
 // Function to close the popup
@@ -323,3 +353,100 @@ function closeHelp() {
 function updateMassValue(value) {
   document.getElementById("mass-value").textContent = value;
 }
+
+
+function createAtomicModel(container, element) {
+ 
+  //Error Handling code is below - we used try & catch
+  try{
+      // Remove existing 3D model from the container (if any)
+      container.innerHTML = "";
+
+      // Create a scene
+      const scene = new THREE.Scene();
+
+      // Create a camera
+      const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+      camera.position.z = 7;
+
+      // Create a renderer
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(220, 220);
+      renderer.setPixelRatio(window.devicePixelRatio);
+      container.appendChild(renderer.domElement);
+
+      // Set the canvas background color dynamically
+      renderer.setClearColor('#080808');
+
+      // Add lighting for realistic visuals
+      const light = new THREE.DirectionalLight(0xffffff, 1); // White directional light
+      light.position.set(10, 10, 10); // Position of the light source
+      scene.add(light);
+
+      const ambientLight = new THREE.AmbientLight(0x404040, 0.5); // Soft ambient light
+      scene.add(ambientLight);
+
+      // Create the nucleus
+      const nucleusGeometry = new THREE.SphereGeometry(0.5, 128, 128);
+      const nucleusMaterial = new THREE.MeshBasicMaterial({ color: `#${Math.floor(Math.random() * 16777215).toString(16)}`,metalness: 0.5,
+      roughness: 0.1 });
+      const nucleus = new THREE.Mesh(nucleusGeometry, nucleusMaterial);
+      scene.add(nucleus);
+
+      // Create electrons
+      const electronGroup = new THREE.Group();
+      scene.add(electronGroup);
+
+      const electronGeometry = new THREE.SphereGeometry(0.1, 32, 32);
+      const electronMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 ,emissive: 0x00ff00, // Glowing effect 
+      metalness: 0.2,
+      roughness: 0.3});
+
+      // Calculate the number of electrons from atomic number
+      const numElectrons = element.atomicNo;
+
+      // Electron shell configuration (simplified example)
+      const shells = [];
+      let remainingElectrons = numElectrons;
+
+      const maxElectronsPerShell = [2, 8, 18, 32, 32, 18, 8]; // Example shell configuration
+      for (let i = 0; i < maxElectronsPerShell.length && remainingElectrons > 0; i++) {
+        const electronsInThisShell = Math.min(remainingElectrons, maxElectronsPerShell[i]);
+        shells.push(electronsInThisShell);
+        remainingElectrons -= electronsInThisShell;
+      }
+
+      // Create electron orbits
+      shells.forEach((numElectronsInShell, shellIndex) => {
+        const radius = 1 + shellIndex; // Orbit radius increases with shell index
+        for (let i = 0; i < numElectronsInShell; i++) {
+          const angle = (i / numElectronsInShell) * Math.PI * 2;
+          const electron = new THREE.Mesh(electronGeometry, electronMaterial);
+          electron.position.x = Math.cos(angle) * radius;
+          electron.position.y = Math.sin(angle) * radius;
+          electronGroup.add(electron);
+        }
+      });
+
+      // Animate the electrons
+      function animate() {
+        requestAnimationFrame(animate);
+        electronGroup.rotation.y += 0.01; // Rotate the entire group of electrons
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      // Dispose of resources when switching models
+      container.cleanup = () => {
+        electronGeometry.dispose();
+        electronMaterial.dispose();
+        nucleusGeometry.dispose();
+        nucleusMaterial.dispose();
+        renderer.dispose();
+      };
+    }catch(error){
+      console.error("Error initializing Three.js:", error);
+      container.innerHTML = "<p>3D model could not be loaded. Please try again or use a supported browser.</p>";
+    }    
+}
+
