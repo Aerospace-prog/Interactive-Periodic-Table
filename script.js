@@ -450,3 +450,90 @@ function createAtomicModel(container, element) {
     }    
 }
 
+
+// Function to populate dropdowns with elements
+function populateDropdowns() {
+  const element1Dropdown = document.getElementById("element1");
+  const element2Dropdown = document.getElementById("element2");
+
+  // Clear existing options
+  element1Dropdown.innerHTML = "";
+  element2Dropdown.innerHTML = "";
+
+  // Add default option
+  const defaultOption = document.createElement("option");
+  defaultOption.text = "Select an element";
+  defaultOption.value = "";
+  //niche hamne default option ko clone kiya hai taki dono dropdown mai add ho
+  element1Dropdown.add(defaultOption);
+  element2Dropdown.add(defaultOption.cloneNode(true));
+
+  // Get all elements
+  const elements = [...periodicTable.flat(), ...fBlock.flat()];
+
+  // Populate dropdowns with elements
+  //for each loop lagaya (elements array par) jisme hamne rest operator use karke dono arrays ko ek array mai merge kiya
+  elements.forEach((element) => {
+    if (element) {
+      const option1 = document.createElement("option");
+      option1.text = element.name;
+      option1.value = element.symbol;
+      element1Dropdown.add(option1);
+
+      const option2 = document.createElement("option");
+      option2.text = element.name;
+      option2.value = element.symbol;
+      element2Dropdown.add(option2);
+    }
+  });
+}
+
+// Call the function to populate dropdowns on page load
+populateDropdowns();
+
+// Function to compare selected elements
+function compareElements() {
+  const element1Symbol = document.getElementById("element1").value;
+  const element2Symbol = document.getElementById("element2").value;
+
+  // Get all elements
+  //here we used flat() method to flatten the array- because 
+  //the array is nested and we need to flatten it to get all elements in a single array
+  const elements = [...periodicTable.flat(), ...fBlock.flat()];
+
+  // Find the selected elements
+  //here we used find() method to get the first element that matches the condition
+  const element1 = elements.find((el) => el && el.symbol === element1Symbol);
+  const element2 = elements.find((el) => el && el.symbol === element2Symbol);
+
+  // Update the comparison table
+  if (element1 && element2) {
+    document.getElementById("element1-name").innerText = element1.name;
+    document.getElementById("element2-name").innerText = element2.name;
+    document.getElementById("element1-atomicNo").innerText = element1.atomicNo;
+    document.getElementById("element2-atomicNo").innerText = element2.atomicNo;
+    document.getElementById("element1-atomicMass").innerText = element1.atomicMass;
+    document.getElementById("element2-atomicMass").innerText = element2.atomicMass;
+    document.getElementById("element1-state").innerText = element1.state;
+    document.getElementById("element2-state").innerText = element2.state;
+    document.getElementById("element1-metallicCharacter").innerText = element1.metallicCharacter;
+    document.getElementById("element2-metallicCharacter").innerText = element2.metallicCharacter;
+  } else {
+    alert("Please select valid elements for comparison.");
+  }
+}
+
+//function to display the comparison table
+function toggleComparisonTool() {
+  const comparisonTool = document.getElementById("comparison-tool");
+  if (comparisonTool.style.display === "block") {
+    comparisonTool.style.display = "none";
+  } else {
+    comparisonTool.style.display = "block";
+  }
+}
+//Now the function to close the comparison tool
+function closeComparisonTool() {
+  const comparisonTool = document.getElementById("comparison-tool");
+  comparisonTool.style.display = "none";
+}
