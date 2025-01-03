@@ -18,6 +18,14 @@ td {
 td:hover {
   transform: scale(1.25);
   cursor: pointer;
+  -webkit-transform: scale(1.25);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  will-change:transform;
 }
 
 .empty:hover {
@@ -101,6 +109,14 @@ h1 {
 .f-block:hover {
   transform: scale(1.25);
   cursor: pointer;
+  -webkit-transform: scale(1.25);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  will-change:transform;
 }
 
 .show-table-btn {
