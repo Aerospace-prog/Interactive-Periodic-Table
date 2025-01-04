@@ -63,7 +63,7 @@
 
 ## 🔗 **Website Link**
 Below is the final Deployed website link which is publically available.. 🔥
-## <a href="https://interact-periodic-table.netlify.app/">Click Me to see  Periodic Table </a>
+## <a href="https://interact-periodic-table.netlify.app/" target="_blank">Click Me To See Periodic Table </a>
 
 ## 🤝 **Contributing**
 
