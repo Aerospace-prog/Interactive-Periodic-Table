@@ -488,6 +488,7 @@ th {
   cursor: pointer;
   font-size: 16px;
   float: right;
+  transition: transform 0.3s ease;
 }
 
 .help-btn:hover {
