@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://interact-periodic-table.netlify.app/sitemap.xml
