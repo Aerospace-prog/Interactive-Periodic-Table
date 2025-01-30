@@ -149,6 +149,40 @@ h1 {
   box-shadow: 10 10 10px black;
 }
 
+.search-bar label {
+  font-weight: bold;
+  margin-right: 10px;
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.search-bar select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s;
+}
+
+.search-bar select option {
+  padding: 10px;
+  background-color: #fff;
+  color: #333;
+}
+
+.search-bar select option:checked {
+  background-color: #4caf50;
+  color: white;
+}
+
+.search-bar select option:hover {
+  background-color: #e0e0e0;
+}
+
 .search-bar input[type="text"] {
   width: 70%;
   height: 30px;
