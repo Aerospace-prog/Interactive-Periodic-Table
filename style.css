@@ -746,3 +746,32 @@ td[class^="comp-td"]{
     
   };
 }
+
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(to right, #9a6bc2 30%, #D44563 70%);
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+}
+
+.footer-section {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.footer-section p {
+  margin-bottom: 10px;
+  color: black; 
+}
+
+.footer-section a {
+  text-decoration: none;
+  color: #fff; 
+
+.footer-section a:hover {
+  color: #ccc; 
+}
