@@ -1,46 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta
-  name="description"
-  content="Explore the world of chemistry with our interactive periodic table. Learn about elements, their properties, and atomic structures in a fun and engaging way."
-/>
-<meta
-  name="keywords"
-  content="periodic table, elements, chemistry, atomic structure, 3D model"
-/>
-  <title>Periodic Table</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon"
-    href="https://res.cloudinary.com/ddgqnimxd/image/upload/f_auto,q_auto/v1734947741/periodic-table_faviconpng_axqemu.png"
-    type="image/x-icon">
-  <script src="data.js"></script>
-  <!-- Three.js (A js library for 3D rendering)CDN link -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Explore the world of chemistry with our interactive periodic table. Learn about elements, their properties, and atomic structures in a fun and engaging way."
+    />
+    <meta
+      name="keywords"
+      content="periodic table, elements, chemistry, atomic structure, 3D model"
+    />
+    <title>Periodic Table</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="icon"
+      href="https://res.cloudinary.com/ddgqnimxd/image/upload/f_auto,q_auto/v1734947741/periodic-table_faviconpng_axqemu.png"
+      type="image/x-icon"
+    />
+    <script src="data.js"></script>
+    <!-- Three.js (A js library for 3D rendering)CDN link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  </head>
+  <body>
     <!-- Button of help modal -->
     <button onclick="openHelp()" class="help-btn">Help</button>
-
 
     <!-- search box code  -->
     <div class="search-bar">
       <form onsubmit="searchElement(event)">
-        <input type="text" id="search-input" placeholder="Enter Atomic no. or Symbol to Search">
-        <input type="submit" value="Search">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Enter Atomic no. or Symbol to Search"
+        />
+        <input type="submit" value="Search" />
         <!-- New Filter Dropdowns -->
         <h2>Filter Elements</h2>
+        <label for="state-filter">Select State:</label>
         <select id="state-filter">
           <option value="">All States</option>
           <option value="solid">Solid</option>
           <option value="liquid">Liquid</option>
           <option value="gas">Gas</option>
         </select>
-        
+
+        <label for="metallic-character-filter"
+          >Select Metallic Character:</label
+        >
         <select id="metallic-character-filter">
           <option value="">All Types</option>
           <option value="metal">Metal</option>
@@ -48,83 +55,106 @@
           <option value="metalloid">Metalloid</option>
         </select>
 
-        <br>
+        <br />
         <label for="mass-range">Atomic Mass Range:</label>
-        <input type="range" id="mass-range" min="1" max="300" value="300" step="1" oninput="updateMassValue(this.value)">
-        <span id="mass-value">300</span> <!-- Display the current value of the range slider -->
-        <br><br>
-        <button type="button" id="reset-filters-btn" onclick="resetFilters()">Reset Filters</button>
+        <input
+          type="range"
+          id="mass-range"
+          min="1"
+          max="300"
+          value="300"
+          step="1"
+          oninput="updateMassValue(this.value)"
+        />
+        <span id="mass-value">300</span>
+        <!-- Display the current value of the range slider -->
+        <br /><br />
+        <button type="button" id="reset-filters-btn" onclick="resetFilters()">
+          Reset Filters
+        </button>
       </form>
-      <button onclick="renderTable(periodicTable); resetInput(); btnDisplayNone()" class="show-table-btn">Click to See Full Periodic-Table</button>
+      <button
+        onclick="renderTable(periodicTable); resetInput(); btnDisplayNone()"
+        class="show-table-btn"
+      >
+        Click to See Full Periodic-Table
+      </button>
     </div>
-
-
 
     <!-- Search History code -->
     <div id="history-sidebar" class="sidebar">
       <h3>Search History</h3>
       <ul id="sidebar-history-list"></ul>
-      <button id="clear-history-btn" onclick="clearHistory()">Clear History</button>
+      <button id="clear-history-btn" onclick="clearHistory()">
+        Clear History
+      </button>
     </div>
-    <button id="his-bar" onclick="toggleSidebar()"><svg xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-        <path fill="#74C0FC"
-          d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9L0 168c0 13.3 10.7 24 24 24l110.1 0c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24l0 104c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65 0-94.1c0-13.3-10.7-24-24-24z" />
-      </svg>History
+    <button id="his-bar" onclick="toggleSidebar()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+        <path
+          fill="#74C0FC"
+          d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9L0 168c0 13.3 10.7 24 24 24l110.1 0c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24l0 104c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65 0-94.1c0-13.3-10.7-24-24-24z"
+        /></svg
+      >History
     </button>
 
     <!-- Toggle Button for Comparison Tool -->
-    <button id="toggle-comparison-btn" onclick="toggleComparisonTool()">Open Comparison Tool</button>
+    <button id="toggle-comparison-btn" onclick="toggleComparisonTool()">
+      Open Comparison Tool
+    </button>
 
-<!-- Element Comparison Tool -->
-<div id="comparison-tool" style="display: none;">
-  <div class="comparison-tool">
-    <div class="close-comparison-tool">
-      <button id="close-comparison-btn" onclick="closeComparisonTool()">&times;</button>
+    <!-- Element Comparison Tool -->
+    <div id="comparison-tool" style="display: none">
+      <div class="comparison-tool">
+        <div class="close-comparison-tool">
+          <button id="close-comparison-btn" onclick="closeComparisonTool()">
+            &times;
+          </button>
+        </div>
+        <h2>Element Comparison Tool</h2>
+        <label for="element1">Select Element 1:</label>
+        <select id="element1"></select>
+        <br />
+        <label for="element2">Select Element 2:</label>
+        <select id="element2"></select>
+
+        <button onclick="compareElements()">Compare</button>
+
+        <!-- Comparison Table -->
+        <table id="comparison-table">
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th id="element1-name">Element 1</th>
+              <th id="element2-name">Element 2</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="comp-td">Atomic Number</td>
+              <td id="element1-atomicNo" class="comp-td"></td>
+              <td id="element2-atomicNo" class="comp-td"></td>
+            </tr>
+            <tr>
+              <td class="comp-td">Atomic Mass</td>
+              <td id="element1-atomicMass" class="comp-td"></td>
+              <td id="element2-atomicMass" class="comp-td"></td>
+            </tr>
+            <tr>
+              <td class="comp-td">State</td>
+              <td id="element1-state" class="comp-td"></td>
+              <td id="element2-state" class="comp-td"></td>
+            </tr>
+            <tr>
+              <td class="comp-td">Metallic Character</td>
+              <td id="element1-metallicCharacter" class="comp-td"></td>
+              <td id="element2-metallicCharacter" class="comp-td"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <h2>Element Comparison Tool</h2>
-    <label for="element1">Select Element 1:</label>
-    <select id="element1"></select>
-    <br>
-    <label for="element2">Select Element 2:</label>
-    <select id="element2"></select>
-
-    <button onclick="compareElements()">Compare</button>
-
-    <!-- Comparison Table -->
-    <table id="comparison-table">
-      <thead>
-        <tr>
-          <th>Property</th>
-          <th id="element1-name">Element 1</th>
-          <th id="element2-name">Element 2</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="comp-td">Atomic Number</td>
-          <td id="element1-atomicNo" class="comp-td"></td>
-          <td id="element2-atomicNo" class="comp-td"></td>
-        </tr>
-        <tr>
-          <td class="comp-td">Atomic Mass</td>
-          <td id="element1-atomicMass" class="comp-td"></td>
-          <td id="element2-atomicMass" class="comp-td"></td>
-        </tr>
-        <tr>
-          <td class="comp-td">State</td>
-          <td id="element1-state" class="comp-td"></td>
-          <td id="element2-state" class="comp-td"></td>
-        </tr>
-        <tr>
-          <td class="comp-td">Metallic Character</td>
-          <td id="element1-metallicCharacter" class="comp-td"></td>
-          <td id="element2-metallicCharacter" class="comp-td"></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
 
     <!-- Element details -->
     <div class="category" id="alkali">Alkali metals</div>
@@ -132,55 +162,109 @@
     <div class="category" id="Transition">Transition metals</div>
     <div class="category" id="Metalloids">Metalloids</div>
     <div class="category" id="noble">Noble gases</div>
-    <div class="category" id="Lanthanides">Rare earth elements and Lanthanides</div>
+    <div class="category" id="Lanthanides">
+      Rare earth elements and Lanthanides
+    </div>
     <div class="category" id="Actinides">Actinides</div>
     <div class="category" id="o-metal">Other Metals</div>
     <div class="category" id="o-non-metal">Other Non-Metals</div>
     <div class="category" id="halogens">Halogens</div>
-
-
-
 
     <!-- table render code -->
     <div id="table">
       <table id="periodic-table"></table>
     </div>
 
-
-
     <!-- Popup for Element Details -->
-    <div id="element-popup" class="popup" style="display: none;">
+    <div id="element-popup" class="popup" style="display: none">
       <div class="popup-content" id="popup-content">
         <span class="close" onclick="closePopup()">&times;</span>
         <h2 id="element-title"></h2>
         <p id="element-details"></p>
         <p id="atomic-model"><strong>3D Atomic Model</strong></p>
-
       </div>
     </div>
-
 
     <!-- Help Modal -->
     <div id="help-modal" class="modal">
       <div class="modal-content">
-          <span class="close" onclick="closeHelp()">&times;</span>
-          <h2>Help</h2>
-          <p>Welcome to the Interactive Periodic Table!</p>
-          <h3>How to Use:</h3>
-          <ul>
-              <li><strong>Search Bar:</strong> Type the name, symbol, or atomic number of an element to filter results.</li>
-              <li><strong>Click Elements:</strong> Click on any element in the table to view detailed information.</li>
-              <li><strong>Filters:</strong> Use the dropdown filters to narrow down your search by state (solid, liquid, gas) or metallic character (metal, non-metal, metalloid).</li>
-              <li><strong>Atomic Mass Range Slider:</strong> Use the slider to set a maximum atomic mass for the elements displayed. Move the slider left to decrease the maximum mass or right to increase it. The current value will be displayed next to the slider.</li>
-              <li><strong>History:</strong> Access your search history from the sidebar.</li>
-              <li><strong>3D Atomic Model:</strong> View a 3D model of the selected element's atomic structure.</li>
-              <li><strong>Element Comparison Tool:</strong> Compare the properties of up to 2 elements side-by-side.</li>
-          </ul>
-          <h3>Need More Help?</h3>
-          <p>If you have any questions, feel free to reach out via the contact section.</p>
+        <span class="close" onclick="closeHelp()">&times;</span>
+        <h2>Help</h2>
+        <p>Welcome to the Interactive Periodic Table!</p>
+        <h3>How to Use:</h3>
+        <ul>
+          <li>
+            <strong>Search Bar:</strong> Type the name, symbol, or atomic number
+            of an element to filter results.
+          </li>
+          <li>
+            <strong>Click Elements:</strong> Click on any element in the table
+            to view detailed information.
+          </li>
+          <li>
+            <strong>Filters:</strong> Use the dropdown filters to narrow down
+            your search by state (solid, liquid, gas) or metallic character
+            (metal, non-metal, metalloid).
+          </li>
+          <li>
+            <strong>Atomic Mass Range Slider:</strong> Use the slider to set a
+            maximum atomic mass for the elements displayed. Move the slider left
+            to decrease the maximum mass or right to increase it. The current
+            value will be displayed next to the slider.
+          </li>
+          <li>
+            <strong>History:</strong> Access your search history from the
+            sidebar.
+          </li>
+          <li>
+            <strong>3D Atomic Model:</strong> View a 3D model of the selected
+            element's atomic structure.
+          </li>
+          <li>
+            <strong>Element Comparison Tool:</strong> Compare the properties of
+            up to 2 elements side-by-side.
+          </li>
+        </ul>
+        <h3>Need More Help?</h3>
+        <p>
+          If you have any questions, feel free to reach out via the contact
+          section.
+        </p>
       </div>
     </div>
 
+    <footer>
+      <div class="footer-section">
+        <p>
+          &copy; 2024
+          <a
+            href="https://github.com/Aerospace-prog"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Aerospace-prog</a
+          >. All rights reserved.
+        </p>
+        <p>
+          This project is maintained by
+          <a
+            href="https://github.com/Aerospace-prog"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Aerospace</a
+          >.
+        </p>
+        <p>
+          View the project repository on
+          <a
+            href="https://github.com/Aerospace-prog/Interactive-Periodic-Table"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub</a
+          >.
+        </p>
+      </div>
+    </footer>
+    
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

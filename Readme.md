@@ -16,6 +16,9 @@
 ---
 
 ## 🖼️ **Preview**
+<h1>Final Video</h1>
+<video controls="controls" autoplay="autoplay" loop="loop" src="https://github.com/user-attachments/assets/9bc6b5e3-79ac-443f-ab3e-c4527d752e74"></video>
+
 <h1>HomePage</h1>
 
 <img width="1467" alt="image" src="https://github.com/user-attachments/assets/969bd9c4-b3ff-4ddf-a521-f6feac2127f6" />

@@ -150,6 +150,40 @@ h1 {
   box-shadow: 10 10 10px black;
 }
 
+.search-bar label {
+  font-weight: bold;
+  margin-right: 10px;
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.search-bar select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s;
+}
+
+.search-bar select option {
+  padding: 10px;
+  background-color: #fff;
+  color: #333;
+}
+
+.search-bar select option:checked {
+  background-color: #4caf50;
+  color: white;
+}
+
+.search-bar select option:hover {
+  background-color: #e0e0e0;
+}
+
 .search-bar input[type="text"] {
   width: 70%;
   height: 30px;
@@ -713,3 +747,36 @@ td[class^="comp-td"]{
     
   };
 }
+/* <<<<<<< patch-1
+======= */
+
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(to right, #9a6bc2 30%, #D44563 70%);
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+}
+
+.footer-section {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.footer-section p {
+  margin-bottom: 10px;
+  color: black; 
+}
+
+.footer-section a {
+  text-decoration: none;
+  color: #fff; 
+
+.footer-section a:hover {
+  color: #ccc; 
+}
+/* >>>>>>> main
+ */
