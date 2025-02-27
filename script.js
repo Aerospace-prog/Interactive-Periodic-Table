@@ -537,3 +537,8 @@ function closeComparisonTool() {
   const comparisonTool = document.getElementById("comparison-tool");
   comparisonTool.style.display = "none";
 }
+
+
+window.addEventListener("load", function() {
+  document.querySelector(".loader").style.display = "none";
+});
